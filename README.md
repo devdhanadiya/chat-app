@@ -131,7 +131,7 @@ pnpm install
 Create a `.env` file in the `backend` folder with the following content:
 ```
 # Port number on which the backend server will run
-PORT=5000
+PORT=8000
 
 # Environment (development, production, etc.)
 NODE_ENV=development
@@ -165,7 +165,7 @@ pnpm prisma migrate dev --name init
 pnpm dev
 ```
 
-🚀 The backend will start on `http://localhost:5000`
+🚀 The backend will start on `http://localhost:8000`
 
 ---
 
@@ -184,7 +184,9 @@ pnpm install
 #### 📝 Environment Variables
 Create a `.env.local` file in the `frontend` folder with the following content:
 ```
-NEXT_PUBLIC_BACKEND_URL=http://localhost:5000
+NODE_ENV=
+NEXT_PUBLIC_API_URL=
+NEXT_PUBLIC_WS_URL=
 ```
 
 #### ▶ Run the Frontend
