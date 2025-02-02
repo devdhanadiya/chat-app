@@ -5,38 +5,48 @@ import helmet from "helmet"
 import compression from "compression"
 import cookieParser from "cookie-parser"
 import rateLimit from "express-rate-limit"
+import http from "http"  // Add this
+import { Server as WebSocketServer } from "ws" // Import WebSocket server
 
 // Custom Imports
 import { PORT, NodeEnv, PROD_URL } from "./config"
 import { rootRouter } from "./routes"
 
-const server = express()
+// Express App & HTTP Server
+const app = express();
+const server = http.createServer(app); // Create an HTTP server from Express
+
 const limiter = rateLimit({
-    windowMs: 15 * 60 ^ 1000,
+    windowMs: 15 * 60 * 1000, // Fix incorrect `^` operator
     max: 50,
     message: "Too many requests, Request limit exceeded!"
-})
+});
 
-server.use(cors({
+app.use(cors({
     credentials: true,
     origin: NodeEnv === "production" ? PROD_URL : "http://localhost:3000",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
-}))
+}));
 
 if (NodeEnv === "production") {
-    server.use(limiter)
+    app.use(limiter);
 }
 
-server.use(express.json({ limit: "5mb" }))
-server.use(express.urlencoded({ limit: "5mb", extended: true }))
-server.use(cookieParser())
-server.use(helmet())
-server.use(compression())
+app.use(express.json({ limit: "5mb" }));
+app.use(express.urlencoded({ limit: "5mb", extended: true }));
+app.use(cookieParser());
+app.use(helmet());
+app.use(compression());
 
 // Handler Middlewares
-server.use("/api", rootRouter)
+app.use("/api", rootRouter);
 
+// ------------- WebSocket Setup -------------
+import { setupWebSocketServer } from "./lib/socket";
+setupWebSocketServer(server); // Attach WebSocket to the same HTTP server
+
+// Start Server
 server.listen(PORT, () => {
-    console.log(`Serving at: ${PORT}`);
-})
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

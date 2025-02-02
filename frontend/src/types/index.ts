@@ -27,7 +27,7 @@ export interface UserLoginData {
 export interface AuthState {
     authUser: User | null;
     isRegistering: boolean;
-    isLogginIn: boolean;
+    isLoggingIn: boolean;
     isUpdatingProfile: boolean;
     isChecking: boolean;
     isCheckingAuth: boolean;
@@ -66,11 +66,11 @@ export interface ChatStore {
     messages: Message[];
     users: User[];
     selectedUser: User | null;
-    isUserLoading: boolean;
-    isMessageLoading: boolean;
+    isUsersLoading: boolean;
+    isMessagesLoading: boolean;
     getUsers: () => Promise<void>;
     getMessages: (userId: string) => Promise<void>;
-    sendMessages: (data: {
+    sendMessage: (data: {
         text?: string,
         image?: string | ArrayBuffer | null
     }) => Promise<void>;
