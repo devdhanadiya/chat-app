@@ -32,12 +32,11 @@ export const register = async (req: Request, res: Response) => {
             return
         }
 
-        const { email, username, fullname, password } = data
+        const { email, fullname, password } = data
         const hashedPass = await bcrypt.hash(password, 10)
         const user = await prisma.user.create({
             data: {
                 email,
-                username,
                 fullname,
                 password: hashedPass
             }

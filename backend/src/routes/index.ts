@@ -5,6 +5,6 @@ import { messageRouter } from "./messageRouter";
 const router = Router()
 
 router.use("/auth", authRouter)
-router.use("/message", messageRouter)
+router.use("/messages", messageRouter)
 
 export { router as rootRouter } //Root Router for the application
