@@ -9,14 +9,8 @@
     // <Custom Config>
     "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".env"
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist", ".env"]
 }

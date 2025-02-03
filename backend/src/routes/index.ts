@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { authRouter } from "./authRouter";
-import { messageRouter } from "./messageRouter";
+import authRouter from "./authRouter";
+import messageRouter from "./messageRouter";
 
-const router = Router()
+const rootRouter = Router();
 
-router.use("/auth", authRouter)
-router.use("/messages", messageRouter)
+rootRouter.use("/auth", authRouter);
+rootRouter.use("/messages", messageRouter);
 
-export { router as rootRouter } //Root Router for the application
+export default rootRouter; // Root Router for the application

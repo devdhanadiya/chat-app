@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Azeret_Mono as Geist_Mono } from "next/font/google";
 import "@/styles/main.css";
-import Navbar from "@/components/Navbar";
 import { Toaster } from "react-hot-toast";
+import Navbar from "@/components/Navbar";
 import Provider from "@/Provider";
 import { ChildrenProps } from "@/types";
 
@@ -24,9 +24,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<ChildrenProps>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Provider>
           <Toaster position="top-center" reverseOrder={false} />
           <Navbar />

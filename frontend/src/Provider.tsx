@@ -1,46 +1,44 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useThemeStore } from "@/store/useThemeStore"
-import { useAuthStore } from "@/store/useAuthStore"
-import Loading from "@/app/loading"
-import { ChildrenProps } from "@/types"
+import { useState, useEffect } from "react";
+import useThemeStore from "@/store/useThemeStore";
+import useAuthStore from "@/store/useAuthStore";
+import Loading from "@/app/loading";
+import { ChildrenProps } from "@/types";
 
 function ThemeProvider({ children }: ChildrenProps) {
-    const { theme, isLoading, setIsLoading } = useThemeStore()
-    const [mounted, setMounted] = useState<boolean>(false)
+  const { theme, isLoading, setIsLoading } = useThemeStore();
+  const [mounted, setMounted] = useState<boolean>(false);
 
-    useEffect(() => {
-        setMounted(true)
-        setIsLoading(false)
-    }, [setIsLoading])
+  useEffect(() => {
+    setMounted(true);
+    setIsLoading(false);
+  }, [setIsLoading]);
 
-    if (!mounted || isLoading) {
-        return <Loading />
-    }
+  if (!mounted || isLoading) {
+    return <Loading />;
+  }
 
-    return <div data-theme={theme}>{children}</div>
+  return <div data-theme={theme}>{children}</div>;
 }
 
 function AuthProvider({ children }: ChildrenProps) {
-    const { checkAuth, isCheckingAuth } = useAuthStore()
+  const { checkAuth, isCheckingAuth } = useAuthStore();
 
-    useEffect(() => {
-        checkAuth()
-    }, [checkAuth])
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
-    if (isCheckingAuth) {
-        return <Loading />
-    }
-    return children
+  if (isCheckingAuth) {
+    return <Loading />;
+  }
+  return children;
 }
 
 export default function Provider({ children }: ChildrenProps) {
-    return (
-        <ThemeProvider>
-            <AuthProvider>
-                {children}
-            </AuthProvider>
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider>
+      <AuthProvider>{children}</AuthProvider>
+    </ThemeProvider>
+  );
 }

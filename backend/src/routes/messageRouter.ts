@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { authMiddleware } from "../middleware/middleware";
+import authMiddleware from "../middleware/middleware";
 import { getUsersForSideBar, getMessage, sendMessage } from "../controller/messageController";
 
-const router = Router()
-router.get("/users", authMiddleware, getUsersForSideBar);
-router.get("/:id", authMiddleware, getMessage);
-router.post("/send/:id", authMiddleware, sendMessage);
+const messageRouter = Router();
+messageRouter.get("/users", authMiddleware, getUsersForSideBar);
+messageRouter.get("/:id", authMiddleware, getMessage);
+messageRouter.post("/send/:id", authMiddleware, sendMessage);
 
-export { router as messageRouter }
+export default messageRouter;

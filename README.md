@@ -1,10 +1,12 @@
 # 🚀 Chat App
 
 A real-time chat application built with:
+
 - **🛠 Backend**: Express, TypeScript, Prisma with PostgreSQL
 - **🎨 Frontend**: Next.js, TypeScript, Zustand
 
 ## ✨ Features
+
 - ⚡ Real-time messaging
 - 🔐 User authentication
 - 🗄 PostgreSQL database with Prisma ORM
@@ -16,10 +18,12 @@ A real-time chat application built with:
 ## 🚀 Quick Start Guide
 
 This repository contains two apps:
+
 1. **📦 Backend** (`/backend`)
 2. **🎨 Frontend** (`/frontend`)
 
 ### 📂 Project Structure
+
 ```
 └── 📁chat-app
     └── 📁backend
@@ -117,18 +121,22 @@ This repository contains two apps:
 ### 🛠 Backend Setup
 
 #### ✅ Prerequisites
+
 - 📌 Node.js (>=18)
 - 🗄 PostgreSQL database
 - 📦 pnpm package manager
 
 #### 📥 Installation
+
 ```sh
 cd backend
 pnpm install
 ```
 
 #### 📝 Environment Variables
+
 Create a `.env` file in the `backend` folder with the following content:
+
 ```
 # Port number on which the backend server will run
 PORT=8000
@@ -153,14 +161,17 @@ CLOUDINARY_CLOUD_NAME=your_cloudinary_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 ```
+
 Replace the values with your actual configurations.
 
 #### 🗄 Database Setup
+
 ```sh
 pnpm prisma migrate dev --name init
 ```
 
 #### ▶ Run the Server
+
 ```sh
 pnpm dev
 ```
@@ -172,17 +183,21 @@ pnpm dev
 ### 🎨 Frontend Setup
 
 #### ✅ Prerequisites
+
 - 📌 Node.js (>=18)
 - 📦 pnpm package manager
 
 #### 📥 Installation
+
 ```sh
 cd frontend
 pnpm install
 ```
 
 #### 📝 Environment Variables
+
 Create a `.env.local` file in the `frontend` folder with the following content:
+
 ```
 NODE_ENV=
 NEXT_PUBLIC_API_URL=
@@ -190,6 +205,7 @@ NEXT_PUBLIC_WS_URL=
 ```
 
 #### ▶ Run the Frontend
+
 ```sh
 pnpm dev
 ```
@@ -199,8 +215,9 @@ pnpm dev
 ---
 
 ## 🤝 Contributing
+
 Feel free to open issues and pull requests for improvements!
 
 ## 📜 License
-This project is licensed under the MIT License.
 
+This project is licensed under the MIT License.
